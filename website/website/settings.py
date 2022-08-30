@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -23,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=d99gw%-j18p=)hh7na!z6k^io@v&=3e)ablyqo)5guvg)jo9+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-#ALLOWED_HOSTS = ['panda-detsad.ru', 'www.panda-detsad.ru']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['panda-detsad.ru', 'www.panda-detsad.ru']
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -81,23 +80,23 @@ TEMPLATES = [
 WSGI_APPLICATION = 'website.wsgi.application'
 
 
-# Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
+# # Database
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'u1727676_default',
-#         'USER': 'u1727676_default',
-#         'PASSWORD': 'lqBI0JQQPYa0Sk09',
-#         'HOST': 'localhost',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'u1727676_default',
+        'USER': 'u1727676_default',
+        'PASSWORD': 'lqBI0JQQPYa0Sk09',
+        'HOST': 'localhost',
+    }
+}
 
 
 # Password validation
