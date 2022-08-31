@@ -13,8 +13,6 @@ class ApplicationAPIView(generics.CreateAPIView):
     serializer_class = ApplicationSerializer
 
     def create(self, request, *args, **kwargs):
-        super().create(request, *args, **kwargs)
-
         send_mail(
             subject='Уведобление: заявка на поступление',
             message=dict_to_str(request.data),
@@ -22,14 +20,14 @@ class ApplicationAPIView(generics.CreateAPIView):
             recipient_list=['panda-kids33@yandex.ru']
         )
 
+        return super().create(request, *args, **kwargs)
+
 
 class QuestionAPIView(generics.CreateAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
 
     def create(self, request, *args, **kwargs):
-        super().create(request, *args, **kwargs)
-
         send_mail(
             subject='Уведобление: запись на экскурсию',
             message=dict_to_str(request.data),
@@ -37,14 +35,14 @@ class QuestionAPIView(generics.CreateAPIView):
             recipient_list=['panda-kids33@yandex.ru']
         )
 
+        return super().create(request, *args, **kwargs)
+
 
 class CommentAPIView(generics.CreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
     def create(self, request, *args, **kwargs):
-        super().create(request, *args, **kwargs)
-
         send_mail(
             subject='Уведобление: новый комментарий',
             message=dict_to_str(request.data),
@@ -52,20 +50,22 @@ class CommentAPIView(generics.CreateAPIView):
             recipient_list=['panda-kids33@yandex.ru']
         )
 
+        return super().create(request, *args, **kwargs)
+
 
 class PhoneRequestAPIView(generics.CreateAPIView):
     queryset = PhoneRequest.objects.all()
     serializer_class = PhoneRequestSerializer
 
     def create(self, request, *args, **kwargs):
-        super().create(request, *args, **kwargs)
-
         send_mail(
             subject='Уведобление: заказ телефонного звонка',
             message=dict_to_str(request.data),
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=['panda-kids33@yandex.ru']
         )
+
+        return super().create(request, *args, **kwargs)
 
 
 class PictureAPIView(generics.ListAPIView):
