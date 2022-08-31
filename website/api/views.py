@@ -17,7 +17,7 @@ class ApplicationAPIView(generics.CreateAPIView):
 
         send_mail(
             subject='Уведобление: заявка на поступление',
-            message=request.data,
+            message=dict_to_str(request.data),
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=['panda-kids33@yandex.ru']
         )
@@ -32,7 +32,7 @@ class QuestionAPIView(generics.CreateAPIView):
 
         send_mail(
             subject='Уведобление: запись на экскурсию',
-            message=request.data,
+            message=dict_to_str(request.data),
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=['panda-kids33@yandex.ru']
         )
@@ -47,7 +47,7 @@ class CommentAPIView(generics.CreateAPIView):
 
         send_mail(
             subject='Уведобление: новый комментарий',
-            message=request.data,
+            message=dict_to_str(request.data),
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=['panda-kids33@yandex.ru']
         )
@@ -62,7 +62,7 @@ class PhoneRequestAPIView(generics.CreateAPIView):
 
         send_mail(
             subject='Уведобление: заказ телефонного звонка',
-            message=request.data,
+            message=dict_to_str(request.data),
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=['panda-kids33@yandex.ru']
         )
@@ -71,3 +71,10 @@ class PhoneRequestAPIView(generics.CreateAPIView):
 class PictureAPIView(generics.ListAPIView):
     queryset = Picture.objects.all()
     serializer_class = PictureSerializer
+
+
+def dict_to_str(data):
+    message = ''
+    for key, value in data.items():
+        message += key + ' : ' + value + '\n'
+    return message
