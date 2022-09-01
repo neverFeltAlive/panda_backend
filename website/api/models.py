@@ -14,7 +14,7 @@ class Application(models.Model):
     }
 
     name = models.CharField(max_length=50, blank=False, verbose_name="Имя")
-    phone_number = models.CharField(max_length=15, blank=False, verbose_name="Номер телефона")
+    phone_number = models.CharField(max_length=20, blank=False, verbose_name="Номер телефона")
     email = models.EmailField(max_length=50, blank=True, verbose_name="Электронная почта")
     group_area = models.CharField(max_length=15, blank=False, choices=area_choices, verbose_name="Направление")
     group_age = models.CharField(max_length=15, blank=False, choices=age_choices, verbose_name="Возраст")
@@ -38,7 +38,7 @@ class Question(models.Model):
 class Comment(models.Model):
     name = models.CharField(max_length=50, blank=False, verbose_name="Имя")
     comment = models.TextField(max_length=300, blank=False, verbose_name="Комментарий")
-    phone_number = models.CharField(max_length=15, blank=True, verbose_name="Номер телефона")
+    phone_number = models.CharField(max_length=20, blank=True, verbose_name="Номер телефона")
     email = models.EmailField(max_length=50, blank=True, verbose_name="Электронная почта")
     date = models.DateField(auto_now_add=True, verbose_name="Дата")
 
@@ -48,7 +48,7 @@ class Comment(models.Model):
 
 class PhoneRequest(models.Model):
     name = models.CharField(max_length=50, blank=False, verbose_name="Имя")
-    phone_number = models.CharField(max_length=15, blank=False, verbose_name="Номер телефона")
+    phone_number = models.CharField(max_length=20, blank=False, verbose_name="Номер телефона")
     date = models.DateField(auto_now_add=True, verbose_name="Дата")
 
     def __str__(self):
