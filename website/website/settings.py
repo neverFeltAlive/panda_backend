@@ -115,6 +115,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
+
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'

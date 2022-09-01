@@ -57,8 +57,8 @@ class PhoneRequest(models.Model):
 
 class Picture(models.Model):
     image = models.FileField(upload_to="gallery/", null=True, verbose_name="Фотография")
-    title = models.CharField(max_length=50, blank=False, verbose_name="Название")
-    text = models.TextField(max_length=300, blank=False, default='', verbose_name="Описание")
+    title = models.CharField(max_length=50, blank=True, default='', verbose_name="Название")
+    text = models.TextField(max_length=300, blank=True, default='', verbose_name="Описание")
 
     def __str__(self):
         return self.title
