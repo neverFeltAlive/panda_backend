@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=d99gw%-j18p=)hh7na!z6k^io@v&=3e)ablyqo)5guvg)jo9+
 DEBUG = True
 
 #ALLOWED_HOSTS = ['panda-detsad.ru', 'www.panda-detsad.ru']
-#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -55,7 +55,7 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
 }
 
