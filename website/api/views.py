@@ -3,6 +3,7 @@ from django.conf import settings
 
 from rest_framework import generics
 from rest_framework.response import Response
+from rest_framework import status
 
 from .models import Question, Comment, PhoneRequest, Application, Picture
 from .serializers import QuestionSerializer, CommentSerializer, PhoneRequestSerializer, ApplicationSerializer, \
@@ -13,64 +14,20 @@ class ApplicationAPIView(generics.CreateAPIView):
     queryset = Application.objects.all()
     serializer_class = ApplicationSerializer
 
-    def create(self, request, *args, **kwargs):
-        try:
-            send_mail(
-                subject='Уведобление: заявка на поступление',
-                message=dict_to_str(request.data),
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=['panda-kids33@yandex.ru']
-            )
-        finally:
-            return super().create(request, *args, **kwargs)
-
 
 class QuestionAPIView(generics.CreateAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
-
-    def create(self, request, *args, **kwargs):
-        try:
-            send_mail(
-                subject='Уведобление: запись на экскурсию',
-                message=dict_to_str(request.data),
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=['panda-kids33@yandex.ru']
-            )
-        finally:
-            return super().create(request, *args, **kwargs)
 
 
 class CommentAPIView(generics.CreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
-    def create(self, request, *args, **kwargs):
-        try:
-            send_mail(
-                subject='Уведоvление: новый комментарий',
-                message=dict_to_str(request.data),
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=['panda-kids33@yandex.ru']
-            )
-        finally:
-            return super().create(request, *args, **kwargs)
-
 
 class PhoneRequestAPIView(generics.CreateAPIView):
     queryset = PhoneRequest.objects.all()
     serializer_class = PhoneRequestSerializer
-
-    def create(self, request, *args, **kwargs):
-        try:
-            send_mail(
-                subject='Уведоvление: заказ телефонного звонка',
-                message=dict_to_str(request.data),
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=['panda-kids33@yandex.ru']
-            )
-        finally:
-            return super().create(request, *args, **kwargs)
 
 
 class PictureAPIView(generics.ListAPIView):
@@ -91,8 +48,4 @@ class PictureAPIView(generics.ListAPIView):
         return Response(serializer.data)
 
 
-def dict_to_str(data):
-    message = ''
-    for key, value in data.items():
-        message += key + ' : ' + value + '\n'
-    return message
+
